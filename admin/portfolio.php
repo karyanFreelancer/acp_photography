@@ -1,0 +1,1 @@
+<?php $_GET['type']='portfolio';require __DIR__.'/manage.php'; ?>

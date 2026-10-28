@@ -1,0 +1,16 @@
+<?php
+require_once __DIR__.'/../config/config.php'; require_admin();
+$pageTitle='Website Manager'; $active='website-manager'; require __DIR__.'/_layout.php';
+$groups=[
+ 'Branding & banner'=>[['Logo & favicon','settings.php','Upload and change your studio identity'],['Hero banner & video','homepage.php','Update home hero images and showreel'],['Headings & text','homepage.php','Edit homepage headings and descriptions']],
+ 'Contact & location'=>[['Phone, address and Google Maps','contact.php','Edit studio contact details and location']],
+ 'Photos, films & galleries'=>[['Public gallery uploads','content-manager.php?kind=gallery','Upload and publish portfolio photos'],['Cinematic films','content-manager.php?kind=film','Upload films and posters'],['Private Photoowl galleries','galleries.php','Manage client event galleries and external links']],
+ 'Packages & social proof'=>[['Pricing packages','content-manager.php?kind=pricing','Create and list pricing cards'],['Services','content-manager.php?kind=service','Manage service descriptions and images'],['Client reviews','content-manager.php?kind=testimonial','Publish client testimonials'],['Brands worked with','content-manager.php?kind=brand','Manage partner names and logos']],
+ 'Website & account'=>[['Page SEO','seo.php','Manage SEO settings'],['Admin profile','account.php','Change account details and password']]
+];
+?>
+<style>.wm-head{margin:10px 0 28px}.wm-head h1{font-size:clamp(28px,4vw,44px)}.wm-groups{display:grid;gap:14px}.wm-group{border:1px solid #dce2dc;border-radius:16px;background:#fff;overflow:hidden}.wm-group summary{padding:20px 24px;font-weight:750;cursor:pointer;display:flex;justify-content:space-between;align-items:center;list-style:none}.wm-group summary::-webkit-details-marker{display:none}.wm-group summary:after{content:'+';font-size:25px}.wm-group[open] summary:after{content:'−'}.wm-items{padding:0 18px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px}.wm-item{display:flex;flex-direction:column;gap:7px;padding:18px;border:1px solid #e4e8e3;border-radius:12px;text-decoration:none;color:#20332a;background:#fafbf9}.wm-item:hover{border-color:#75917c;background:#f1f5f0}.wm-item small{color:#69786f;line-height:1.5}.wm-tip{padding:15px 20px;background:#f1f4f0;border-radius:12px;margin:0 0 22px;color:#415448}</style>
+<div class="wm-head"><p class="eyebrow">STUDIO CONTENT CONTROL</p><h1>Manage your website</h1><p class="muted">Choose a category to reveal only the settings you need. Each editor includes its own save controls and records.</p></div>
+<div class="wm-tip">Upload and edit are separate from public pages. Existing content is not deleted when you open another category.</div>
+<div class="wm-groups"><?php foreach($groups as $group=>$links):?><details class="wm-group" <?=$group==='Branding & banner'?'open':''?>><summary><?=htmlspecialchars($group,ENT_QUOTES,'UTF-8')?></summary><div class="wm-items"><?php foreach($links as [$name,$href,$desc]):?><a class="wm-item" href="<?=htmlspecialchars($href,ENT_QUOTES,'UTF-8')?>"><strong><?=htmlspecialchars($name,ENT_QUOTES,'UTF-8')?> ↗</strong><small><?=htmlspecialchars($desc,ENT_QUOTES,'UTF-8')?></small></a><?php endforeach;?></div></details><?php endforeach;?></div>
+<?php require __DIR__.'/_footer.php'; ?>

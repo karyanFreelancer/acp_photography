@@ -1,0 +1,15 @@
+/* ACP Photography — bold contemporary editorial typography */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap');
+:root{--acp-display:'Plus Jakarta Sans',sans-serif;--acp-copy:'DM Sans',sans-serif;--acp-ui:'DM Sans',sans-serif;--acp-mono:'DM Mono',monospace}
+html,body{font-family:var(--acp-copy)!important}
+main h1,main h2,main h3,.film-hero h1,.film-collection h2,.film-cta h2{font-family:var(--acp-display)!important;font-weight:800!important;letter-spacing:-.065em!important;line-height:1.04!important;text-wrap:balance}
+main h1 em,main h2 em,main h3 em,.film-hero em{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:600!important;font-style:italic!important;letter-spacing:-.045em!important}
+main h1{font-size:clamp(3.3rem,7.5vw,8.5rem)}
+main h2{font-size:clamp(2.4rem,5vw,5.6rem)}
+main h3{letter-spacing:-.04em!important}
+.kicker,.eyebrow,.section-label{font-family:var(--acp-mono)!important;letter-spacing:.14em!important;text-transform:uppercase}
+.acp-code-marquee{background:#181818!important;color:#f9f8f6!important;padding:24px 0!important}
+.acp-code-marquee__track{animation-duration:48s!important}
+.acp-code-marquee__group span{font-family:var(--acp-display)!important;font-weight:800!important;letter-spacing:-.045em!important;font-size:clamp(20px,2.7vw,35px)!important}
+@media(max-width:650px){main h1{font-size:clamp(2.8rem,11vw,5rem)}main h2{font-size:clamp(2.2rem,8vw,3.7rem)}.acp-code-marquee{padding:18px 0!important}}
+@media(prefers-reduced-motion:reduce){.acp-code-marquee__track{animation:none!important}}

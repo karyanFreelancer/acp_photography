@@ -1,0 +1,16 @@
+ACP Photography — inspected and targeted UI patch
+
+Implemented:
+- More robust responsive public navigation, avoids center-positioned menu
+- Review marquee driven by approved reviews; empty when no reviews exist
+- Password visibility control on password inputs
+- Admin favicon in shared layout
+
+NOT completed or verified:
+- Full gallery/banner/logo upload workflows
+- Dynamic service detail pages and pricing CRUD
+- Admin account/profile overhaul
+- Per-page SEO system and full dashboard redesign
+- Live PHP/MySQL integration tests
+
+Install only after backing up existing project and database.

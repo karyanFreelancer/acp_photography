@@ -1,0 +1,1 @@
+<?php $_GET['type']='social';require __DIR__.'/manage.php'; ?>

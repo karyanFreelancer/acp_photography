@@ -1,0 +1,1 @@
+<?php $_GET['type']='clients';require __DIR__.'/manage.php'; ?>

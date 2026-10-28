@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS acp_content_items (id INT AUTO_INCREMENT PRIMARY KEY, kind VARCHAR(32) NOT NULL, title VARCHAR(200) NOT NULL, subtitle TEXT NULL, media_path VARCHAR(500) NULL, link_url VARCHAR(500) NULL, sort_order INT DEFAULT 0, is_published TINYINT(1) DEFAULT 1, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, INDEX (kind,is_published,sort_order));

@@ -1,0 +1,1 @@
+<?php $_GET['type']='services';require __DIR__.'/manage.php'; ?>

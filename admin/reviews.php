@@ -1,0 +1,1 @@
+<?php $_GET['type']='reviews';require __DIR__.'/manage.php'; ?>

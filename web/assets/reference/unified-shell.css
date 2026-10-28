@@ -1,0 +1,9 @@
+/* Shared across ACP public pages; the account slot is always at the right. */
+#acpMainNav.acp-unified-nav{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px;position:relative;z-index:1000}
+.acp-unified-nav>.brand{flex:0 0 auto;margin-right:auto}.acp-unified-nav .links{display:flex;align-items:center;gap:clamp(8px,1.5vw,24px)}
+.acp-unified-nav .acp-nav-actions{display:flex;align-items:center;gap:12px;margin-left:auto;flex-shrink:0}
+.acp-unified-nav .acp-nav-actions .acp-account-links{display:flex!important;align-items:center}
+.acp-unified-nav .acp-nav-toggle{display:none}
+@media(max-width:1000px){#acpMainNav.acp-unified-nav{display:flex!important;flex-wrap:nowrap!important}.acp-unified-nav>.brand{margin-right:auto!important}.acp-unified-nav .acp-nav-actions{order:2;margin-left:auto!important}.acp-unified-nav .acp-nav-toggle{display:inline-flex!important;align-items:center;justify-content:center;min-width:44px;min-height:44px;cursor:pointer}.acp-unified-nav .links{display:none!important;position:absolute!important;top:100%!important;left:0!important;right:0!important;background:#fff!important;color:#171717!important;padding:16px 22px!important;box-shadow:0 15px 35px #0002;flex-direction:column!important;align-items:stretch!important;gap:4px!important;z-index:1100}.acp-unified-nav.acp-nav-open .links{display:flex!important}.acp-unified-nav .links a{padding:12px!important;color:#171717!important}.acp-unified-nav .acp-account-name{display:none}}
+
+@media(max-width:1000px){#acpMainNav.acp-unified-nav{width:100%!important;justify-content:space-between!important}#acpMainNav.acp-unified-nav>.brand{margin-right:auto!important;max-width:55%!important}#acpMainNav.acp-unified-nav .acp-nav-actions{margin-left:auto!important;display:flex!important;justify-content:flex-end!important;gap:8px!important}#acpMainNav.acp-unified-nav .links{top:100%!important}}

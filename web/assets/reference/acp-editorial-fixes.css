@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap');
+:root{--acp-display:'Instrument Serif',Georgia,serif;--acp-copy:'Manrope',sans-serif;--acp-ui:'DM Sans',sans-serif;--acp-mono:'DM Mono',monospace}
+body{font-family:var(--acp-copy)}
+main h1,main h2,main h3,.film-hero h1,.film-collection h2,.film-cta h2{font-family:var(--acp-display)!important;font-weight:400!important;letter-spacing:-.035em!important;line-height:1.08}
+main h1 em,main h2 em,main h3 em{font-family:var(--acp-display)!important;font-style:italic}
+.acp-unified-nav,.acp-unified-nav a,.acp-shared-footer a,.acp-shared-footer h4{font-family:var(--acp-ui)}
+.acp-shared-footer{background:#f4f6f3!important;padding:clamp(46px,6vw,92px) max(22px,calc((100vw - 1320px)/2)) 26px!important;overflow:hidden!important}
+.acp-shared-footer .foot-grid{display:grid!important;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr))!important;gap:clamp(22px,4vw,65px)!important;align-items:start!important}
+.acp-shared-footer .acp-footer-intro{min-width:0!important}
+.acp-shared-footer .acp-footer-intro .brand{display:inline-block!important;width:min(100%,260px)!important;max-width:260px!important;height:auto!important;overflow:hidden!important}
+.acp-shared-footer .acp-footer-intro .acp-brand-logo{display:block!important;width:100%!important;max-width:260px!important;height:auto!important;max-height:95px!important;object-fit:contain!important;object-position:left center!important;transform:none!important}
+.acp-shared-footer .acp-footer-intro p{max-width:290px!important;line-height:1.8!important;margin-top:14px!important}
+.acp-shared-footer .foot-grid>div:not(:first-child){display:flex!important;flex-direction:column!important;gap:12px!important}
+.acp-shared-footer h4{margin:0 0 8px!important;font-size:13px!important;font-weight:700!important}
+.acp-shared-footer a{color:#222!important;text-decoration:none!important;font-size:14px!important}
+.acp-shared-footer .copyright{border-top:1px solid #dce0dc!important;margin-top:65px!important;padding-top:24px!important;font-size:12px!important;color:#68716c!important}
+.acp-code-marquee{position:relative;overflow:hidden;background:#171a18;color:#f8f7f3;padding:24px 0;margin:0!important;width:100%;transform:none!important}
+.acp-code-marquee__window{width:100%;overflow:hidden}
+.acp-code-marquee__track{display:flex;width:max-content;animation:acpCodeScroll 68s linear infinite;will-change:transform}
+.acp-code-marquee__group{display:flex;align-items:center;gap:28px;flex:0 0 auto;padding-right:28px;white-space:nowrap}
+.acp-code-marquee__group span{font:400 clamp(18px,2.4vw,30px)/1.2 var(--acp-display);letter-spacing:.01em}
+.acp-code-marquee__group i{font:normal 14px var(--acp-mono);color:#bdb5a5}
+.acp-code-marquee:hover .acp-code-marquee__track{animation-play-state:paused}
+@keyframes acpCodeScroll{to{transform:translateX(-50%)}}
+@media(max-width:750px){.acp-shared-footer .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:34px 20px!important}.acp-shared-footer .acp-footer-intro{grid-column:1/-1}.acp-shared-footer .acp-footer-intro .brand,.acp-shared-footer .acp-footer-intro .acp-brand-logo{max-width:215px!important}.acp-shared-footer .copyright{margin-top:35px!important}}
+@media(prefers-reduced-motion:reduce){.acp-code-marquee__track{animation:none;flex-wrap:wrap;width:auto}.acp-code-marquee__group:nth-child(2){display:none}}

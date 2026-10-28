@@ -1,0 +1,20 @@
+<?php
+require_once __DIR__.'/../config/config.php';require_admin();
+$msg='';$type=$_GET['type']??'films';if(!in_array($type,['films','partners','settings'],true))$type='films';
+if($_SERVER['REQUEST_METHOD']==='POST'){
+ csrf_check();
+ try{
+ if($type==='settings'){
+ foreach(['showreel_url','instagram_url'] as $key){$v=trim((string)($_POST[$key]??''));if($v!=='' && !filter_var($v,FILTER_VALIDATE_URL) && !str_starts_with($v,'assets/'))throw new RuntimeException('Invalid URL');save_setting($key,$v);}
+ }else{
+ $table=$type==='films'?'studio_films':'studio_partners';
+ if(isset($_POST['delete_id'])){$q=$pdo->prepare("DELETE FROM `$table` WHERE id=?");$q->execute([(int)$_POST['delete_id']]);}
+ elseif($type==='films'){$title=trim($_POST['title']??'');$url=trim($_POST['video_url']??'');if(!$title||!filter_var($url,FILTER_VALIDATE_URL))throw new RuntimeException('Title and valid video URL required');$q=$pdo->prepare('INSERT INTO studio_films(title,video_url,poster_url) VALUES(?,?,?)');$q->execute([$title,$url,trim($_POST['poster_url']??'')]);}
+ else {$name=trim($_POST['name']??'');if(!$name)throw new RuntimeException('Partner name required');$q=$pdo->prepare('INSERT INTO studio_partners(name,logo_url,website_url) VALUES(?,?,?)');$q->execute([$name,trim($_POST['logo_url']??''),trim($_POST['website_url']??'')]);}
+ }
+ $msg='Saved successfully';
+ }catch(Throwable $e){$msg=$e->getMessage();}
+}
+$rows=[];if($type!=='settings'){try{$rows=$pdo->query('SELECT * FROM '.($type==='films'?'studio_films':'studio_partners').' ORDER BY id DESC')->fetchAll(PDO::FETCH_ASSOC);}catch(Throwable $e){$msg='Import database/ACP_REFERENCE_UPGRADE.sql first.';}}
+?>
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Studio Content Manager</title><style>body{font:16px system-ui;background:#f6f6f6;color:#171717;margin:0}.wrap{max-width:1000px;margin:auto;padding:35px 20px}a{color:inherit}nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:30px}form,article{background:white;padding:22px;margin:15px 0;border:1px solid #ddd}input{display:block;width:100%;box-sizing:border-box;padding:12px;margin:9px 0 15px;border:1px solid #aaa}button{background:#171717;color:white;border:0;padding:12px 22px;cursor:pointer}h1{font-size:clamp(30px,5vw,55px)}.small{color:#777;font-size:13px}</style><main class="wrap"><nav><a href="index.php">← Dashboard</a><a href="studio-extra.php?type=films">Films</a><a href="studio-extra.php?type=partners">Partners</a><a href="studio-extra.php?type=settings">Hero video & social</a><a href="../web/index.php" target="_blank">View website</a></nav><h1>Studio content · <?=htmlspecialchars(ucfirst($type))?></h1><p><?=htmlspecialchars($msg)?></p><form method="post"><input type="hidden" name="csrf" value="<?=htmlspecialchars(csrf_token())?>"><?php if($type==='settings'):?><?php foreach(['showreel_url','instagram_url'] as $key):?><label><?=htmlspecialchars($key)?><input name="<?=htmlspecialchars($key)?>" value="<?=htmlspecialchars(setting($key,''))?>"></label><?php endforeach;?><?php elseif($type==='films'):?><input name="title" placeholder="Film title" required><input name="video_url" type="url" placeholder="https://...video.mp4 or YouTube URL" required><input name="poster_url" placeholder="Optional poster image URL"><?php else:?><input name="name" placeholder="Partner / brand name" required><input name="logo_url" placeholder="Partner logo URL"><input name="website_url" placeholder="Partner website URL"><?php endif;?><button>Save</button></form><?php foreach($rows as $row):?><article><strong><?=htmlspecialchars($row['title']??$row['name'])?></strong><p class="small"><?=htmlspecialchars($row['video_url']??$row['website_url']??'')?></p><form method="post" onsubmit="return confirm('Delete this item?')"><input type="hidden" name="csrf" value="<?=htmlspecialchars(csrf_token())?>"><input type="hidden" name="delete_id" value="<?=(int)$row['id']?>"><button>Delete</button></form></article><?php endforeach;?></main></html>

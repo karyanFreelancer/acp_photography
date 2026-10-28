@@ -1,0 +1,16 @@
+/* ACP responsive navigation and review ticker */
+html,body{max-width:100%;overflow-x:clip}
+#acpMainNav{position:relative;z-index:100;max-width:1280px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+#acpMainNav .brand img{display:block;width:min(240px,36vw);height:auto;max-height:65px;object-fit:contain}
+#acpMainNav .links{margin-left:auto;align-items:center;justify-content:center;gap:clamp(10px,1.5vw,25px)}
+#acpMainNav .navcta{white-space:nowrap}
+@media(max-width:900px){#acpMainNav{height:78px;padding:0 18px;flex-wrap:nowrap}#acpMainNav .brand img{width:min(210px,47vw)}#acpMainNav .menu{display:block;margin-left:auto;order:2;z-index:102}#acpMainNav .links{display:none;position:absolute;left:0;right:0;top:100%;margin:0;background:#fff;padding:18px;flex-direction:column;align-items:stretch;box-shadow:0 18px 32px #0002;z-index:101}#acpMainNav .links.open{display:flex}#acpMainNav .links a{padding:13px 12px;border-bottom:1px solid #eee}#acpMainNav .navcta{display:none}}
+.acp-review-marquee{overflow:hidden;width:100%;margin:32px 0 15px;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.acp-review-track{display:flex;gap:16px;width:max-content;animation:acp-review-scroll 38s linear infinite}
+.acp-review-marquee:hover .acp-review-track{animation-play-state:paused}
+.acp-review-card{width:clamp(260px,30vw,390px);flex:none;border:1px solid #e2e7e3;background:#fff;border-radius:16px;padding:24px;white-space:normal}
+.acp-review-card p{font-size:14px;line-height:1.7}.acp-review-card strong{display:block;margin-top:12px}
+@keyframes acp-review-scroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.acp-review-track{animation:none;flex-wrap:wrap;width:auto}.acp-review-marquee{overflow:visible}}
+.acp-password-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:transparent;border:0;cursor:pointer;padding:8px;font-size:17px}
+.acp-password-wrap{position:relative}.acp-password-wrap input{padding-right:48px!important}

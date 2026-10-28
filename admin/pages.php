@@ -1,0 +1,1 @@
+<?php $_GET['type']='pages';require __DIR__.'/manage.php'; ?>
